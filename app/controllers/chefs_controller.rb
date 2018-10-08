@@ -3,6 +3,9 @@ class ChefsController < ApplicationController
 		# render plain: 'plain text'
 		@chef = Chef.new
 	end
+	def index
+		@chefs = Chef.all
+	end
 	def create
 		@chef = Chef.new(chef_params)
 		if @chef.save
@@ -13,7 +16,19 @@ class ChefsController < ApplicationController
 		end
 	end
 	def show
-		
+		@chef = Chef.find(params[:id])
+	end
+	def edit
+		@chef = Chef.find(params[:id])
+	end
+	def update
+		@chef = Chef.find(params[:id])
+		if @chef.update(chef_params)
+			flash[:success] = "Profile Updated successfully"
+			redirect_to @chef
+		else
+			render 'edit'
+		end	
 	end
 	private
 		def chef_params  
