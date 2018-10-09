@@ -1,2 +1,7 @@
 Active record
 ORM
+Flash flash.now
+render redirect_to
+login / sigupform
+toggle!(:admin)  ture
+toggle(:admin) false
